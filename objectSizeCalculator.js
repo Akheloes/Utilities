@@ -23,7 +23,7 @@ function objectContent(object) {
     const content_ = Object.entries(object);
 
     for(let [key, value] of content_) {
-        pile.push(key); // keys can only be 'string' typed in ES spec
+        pile.push(key); // keys can only be 'string' typed in ECMA's specs
         if(typeof(value) !== 'object') {
             pile.push(value); // if value is a primitive type, just pile it
         } else {
@@ -70,8 +70,8 @@ TypeSize = Object.freeze(TypeSize);
 //-----------------------------------------------------
 // example of use
 
-let obj = {a: 1, b: {c: 2}, d: {e: {f: {g: 3}}}}
-let content = objectContent(obj);
-let size = objectSizeCalculator(obj);
-console.log(content);
-console.log(size);
+// let obj = {a: 1, b: {c: 2}, d: {e: {f: {g: 3}}}}
+// let content = objectContent(obj);
+// let size = objectSizeCalculator(obj);
+// console.log(content);
+// console.log(size);
