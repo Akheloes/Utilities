@@ -3,7 +3,14 @@
  * This function recurses through an object structure, finds all object within it, then
  */
 function objectSizeCalculator(object) {
-        
+    //analyse the content of the object to be sized
+    let content = objectContent(object);
+    let size = 0;
+    content.forEach((item) => {
+        size += sizeOfType(item);
+    });  
+    
+    return size;
 }
 
 /**
@@ -11,11 +18,10 @@ function objectSizeCalculator(object) {
  * In the end, it returns a basic array where all items are primitive types.
  */
 function objectContent(object) {
+
     let pile = [];
     const content_ = Object.entries(object);
-    // for (let [key, value] of content_) {
-    //     console.log(`${key}: ${value}`);
-    // }
+
     for(let [key, value] of content_) {
         pile.push(key); // keys can only be 'string' typed in ES spec
         if(typeof(value) !== 'object') {
@@ -62,7 +68,10 @@ let TypeSize = {
 TypeSize = Object.freeze(TypeSize);
 
 //-----------------------------------------------------
+// example of use
 
 let obj = {a: 1, b: {c: 2}, d: {e: {f: {g: 3}}}}
 let content = objectContent(obj);
+let size = objectSizeCalculator(obj);
 console.log(content);
+console.log(size);
