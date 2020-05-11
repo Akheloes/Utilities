@@ -1,3 +1,5 @@
+const fs = require('fs').promises;
+
 function CSVtoArray(csv, delimiter = ',', ignoreFirstLine = false) {
     return csv
         .slice(ignoreFirstLine ? csv.indexOf('\n')+1 : 0)
@@ -5,15 +7,13 @@ function CSVtoArray(csv, delimiter = ',', ignoreFirstLine = false) {
         .map(line => line.split(delimiter).map(item => item.trim()))
 }
 
-const fs = require('fs');
 const filePath = './hurricanes.txt';
 
-let csvContent = fs.readFileSync(filePath, 'utf8');
-let parsedCSV = CSVtoArray(csvContent);
-console.log(parsedCSV);
+async function read_parse() {
+    let csv = await fs.readFile(filePath, 'utf8');
+    return CSVtoArray(csv);
+}
 
-// fs.readFile(filePath, 'utf8', (err, csv) => {
-//     if(err) throw err;
-//     let parsedCSV = CSVtoArray(csv);
-//     console.log(parsedCSV);
-// });
+read_parse().then((parsedCSV) => {
+    console.log(parsedCSV);
+});
