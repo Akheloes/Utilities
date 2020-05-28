@@ -11,7 +11,5 @@ function aperture(n, arr) {
 }
 
 /** Examples of use */
-// const ap = aperture(2, [1, 2, 3, 4]); // [[1, 2], [2, 3], [3, 4]]
-// const ap = aperture(3, [1, 2, 3, 4]); // [[1, 2, 3], [2, 3, 4]]
-const ap = aperture(5, [1, 2, 3, 4]); // []
+const ap = aperture(4, [1, 2, 3, 4, 5, 6, 7, 9, 10]);
 console.log(ap);
