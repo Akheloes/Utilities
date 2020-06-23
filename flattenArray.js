@@ -1,5 +1,6 @@
 /**
  * Take an array and flatten it.
+ * Deals only with array-subarray (two levels arrays)
  * [3, 4, [5, 6]]
  */
 function flattenArray(array) {
