@@ -4,9 +4,8 @@
  * [3, 4, [5, 6, [7, 8]]]
  */
 function deepFlattenArray(array) {
-    // Define some type of reccurence, one which delves into a array
     var array = [...array];
-    while(containsSubArray(array)) {
+    while(containsSubArray(array)) { // the simple idea is: re-flatten as long as not entirely flatten
         array = flattenArray(array);
     }
     return array;
