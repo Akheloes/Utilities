@@ -1,9 +1,16 @@
 /**
+ * Using recursion and JS-style to write a more compact deep array's flattener.
+ */
+function deepFlattenArrayJSStyle(array) {
+    const recursiveFlattener = arr => [].concat(...arr.map(v => (Array.isArray(v) ? recursiveFlattener(v) : v)));
+    return recursiveFlattener(array);
+}
+/**
  * Take an array and flatten it.
  * Deals with deep leveled arrays.
  * [3, 4, [5, 6, [7, 8]]]
  */
-function deepFlattenArray(array) {
+function deepFlattenArrayNaive(array) {
     var array = [...array];
     while(containsSubArray(array)) { // the simple idea is: re-flatten as long as not entirely flatten
         array = flattenArray(array);
@@ -37,5 +44,7 @@ function flattenArray(array) {
  * Example of use
  */
 let array = [3, 4, [5, 6, [7, 8, [9, 10]]]];
-let flattened = deepFlattenArray(array);
+let flattened = deepFlattenArrayNaive(array);
+let flattenedJS = deepFlattenArrayJSStyle(array);
 console.log(flattened);
+console.log(flattenedJS);
