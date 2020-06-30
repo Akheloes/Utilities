@@ -8,11 +8,17 @@ function defer(func, ...args) {
 }
 
 /**
+ * Defer function in JS style
+ */
+const deferJS = (fn, ...args) => setTimeout(fn, 0, ...args);
+
+/**
  * Exemple of use
  */
 function func(a, b, c) {
     console.log(a + b + c);
 }
-defer(func, 0, 0, 99); // 6
+deferJS(func, 0, 0, 99); // 6
+// defer(func, 0, 0, 99); // 6
 func(0, 1, 2); // 3
 func(0, 1, 7); // 8
